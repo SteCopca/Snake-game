@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Viborita</title>
+	<link rel="stylesheet" type="text/css" href="indexv.css">
+	<link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+<h1>The Snake</h1><!-- 600, 550-->
+<span><b><p>W : arriba</p><br>
+<p>A: izquierda</p><br>
+<p>S: abajo</p><br>
+<p>D: derecha</p></b></span>
+<canvas width="600" height="550"></canvas>
+<script src="indexv.js"></script>
+<div id="countdown"></div>
+<script>
+var end = new Date('09/29/2021 12:43 PM');
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+
+            clearInterval(timer);
+            document.getElementById('countdown').innerHTML = 'EXPIRED!';
+
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('countdown').innerHTML = days + ' dias, ';
+        document.getElementById('countdown').innerHTML += hours + ' horas, ';
+        document.getElementById('countdown').innerHTML += minutes + ' minutos y ';
+        document.getElementById('countdown').innerHTML += seconds + ' segundos';
+    }
+
+    timer = setInterval(showRemaining, 1000);
+</script>
+</body>
+</html>
